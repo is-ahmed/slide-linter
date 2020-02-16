@@ -7,21 +7,48 @@
       body {
         margin: 0;
         height: 100%;
+        font-family: Lato, Roboto, sans-serif;
+        font-size: 18px;
       }
       .container {
-        height: 80%;
+        height: 100%;
         display: flex;
         flex-direction: column;
+        background: #EDF2F7;
+        box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
       }
 
       .content {
         flex-grow: 1;
+        overflow-y: auto;
+        padding: 20px;
       }
 
       .footer {
-        display: flex;
-        justify-content: flex-end;
-        padding: 10px;
+        padding: 20px;
+        background: #EDF2F7;
+        box-shadow: 0px -4px 20px -10px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn {
+        border: none;
+      }
+
+      .btn--primary {
+        width: 100%;
+        padding: 15px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.33rem;
+        line-height: 1.7;
+        text-align: center;
+        border-radius: 5px;
+        background: #4FD1C5;
+        color: #FFFFFF;
+      }
+
+      .btn--primary:hover {
+        background: #38b2ac;
       }
     </style>
   </head>
@@ -31,7 +58,7 @@
         <ul id="output"></ul>
       </div>
       <div class="footer">
-        <button id="scan">SCAN SLIDE</button>
+        <button id="scan" class="btn btn--primary">Run Scan</button>
       </div>
     </div>
 
