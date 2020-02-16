@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      .container {
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .content {
+        flex-grow: 1;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <ul id="output"></ul>
+      </div>
+      <div class="footer">
+        <button id="scan">SCAN SIDE</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        var currentList = document.getElementById("output");
+        var scanButton = document.getElementById("scan");
+
+        scanButton.addEventListener("click", function(e) {
+          startScan();
+        });
+
+        function addElement(message) {
+          // create a new div element
+          var newListItem = document.createElement("li");
+          // and give it some content
+          var newContent = document.createTextNode(message);
+          // add the text node to the newly created div
+          newListItem.appendChild(newContent);
+
+          // add the newly created element and its content into the DOM
+          currentList.appendChild(newListItem);
+        }
+
+        function showResults(results) {
+          for (var i = 0; i < results.length; i++) {
+            addElement(results[i]);
+          }
+        }
+
+        function clearElements() {
+          var child = currentList.lastElementChild;
+          while (child) {
+            currentList.removeChild(child);
+            child = currentList.lastElementChild;
+          }
+        }
+
+        function startScan() {
+          clearElements();
+          google.script.run
+            .withSuccessHandler(success)
+            .withFailureHandler(failure)
+            .longTitle();
+        }
+
+        function success(results) {
+          console.log("Success.");
+          if (results.length > 0) {
+            showResults(results);
+          } else {
+            showResults(["No errors found."]);
+          }
+          console.log(results);
+        }
+
+        function failure(message) {
+          console.log("Failure");
+          console.log(message);
+        }
+      });
+    </script>
+  </body>
+</html>
