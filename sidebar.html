@@ -14,7 +14,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        background: #EDF2F7;
+        background: #edf2f7;
         box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
       }
 
@@ -26,7 +26,7 @@
 
       .footer {
         padding: 20px;
-        background: #EDF2F7;
+        background: #edf2f7;
         box-shadow: 0px -4px 20px -10px rgba(0, 0, 0, 0.1);
       }
 
@@ -40,22 +40,64 @@
         text-transform: uppercase;
         font-weight: bold;
         font-size: 1.2rem;
-        line-height: 1.0;
+        line-height: 1;
         text-align: center;
         border-radius: 5px;
-        background: #4FD1C5;
-        color: #FFFFFF;
+        background: #4fd1c5;
+        color: #ffffff;
       }
 
       .btn--primary:hover {
         background: #38b2ac;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+
+        background: #ffffff;
+        box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+
+        /* Inside Auto Layout */
+        flex: none;
+        order: 0;
+        margin: 0px 20px;
+      }
+
+      .card__title {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+
+        color: #4A5568;
+
+        /* Inside Auto Layout */
+
+        flex: none;
+        order: 0;
+        align-self: flex-start;
+        margin: 0px 10px;
+      }
+
+      .card__description {
+        font-size: 18px;
+        line-height: 170%;
+
+        color: #A0AEC0;
+
+        /* Inside Auto Layout */
+
+        flex: none;
+        order: 1;
+        margin: 0px 10px;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="content">
-        <ul id="output"></ul>
       </div>
       <div class="footer">
         <button id="scan" class="btn btn--primary">Run Scan</button>
@@ -64,7 +106,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function(event) {
-        var currentList = document.getElementById("output");
+        var contentContainer = document.getElementById("content");
         var scanButton = document.getElementById("scan");
 
         scanButton.addEventListener("click", function(e) {
@@ -73,14 +115,23 @@
 
         function addElement(message) {
           // create a new div element
-          var newListItem = document.createElement("li");
+          var card = document.createElement("div");
+          card.className = 'card'
+
           // and give it some content
-          var newContent = document.createTextNode(message);
+          cardTitle = document.createElement("div");
+          cardTitle.className = "card__title"
+          var cardTitleText = document.createTextNode(message);
+          cardDescription = document.createElement("div");
+          cardDescription.className = "card__description"
+          var cardDescriptionText = document.createTextNode("Some description");
+
           // add the text node to the newly created div
-          newListItem.appendChild(newContent);
+          card.appendChild(cardTitle);
+          card.appendChild(cardDescription);
 
           // add the newly created element and its content into the DOM
-          currentList.appendChild(newListItem);
+          contentContainer.appendChild(card);
         }
 
         function showResults(results) {
