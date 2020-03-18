@@ -44,6 +44,10 @@ function longTitle() {
   if (rawText.length > 45) {
     messages.push("Title too long");
   }
+
+  var imageMsg = tooManyPics();
+  for(var i = 0; i < imageMsg.length; i++)
+    messages.push(imageMsg[i]);
   return messages;
 }
 
