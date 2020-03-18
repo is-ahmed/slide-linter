@@ -42,7 +42,7 @@ function longTitle() {
   var messages = [];
   var rawText = text.asString();
   if (rawText.length > 45) {
-    messages.push("You have too many characters in your title.");
+    messages.push("Title too long");
   }
   return messages;
 }
