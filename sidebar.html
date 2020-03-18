@@ -116,7 +116,9 @@
           // add the text node to the newly created div
           card.appendChild(cardTitle);
           card.appendChild(cardDescription);
-
+          card.onclick = function (e) {this.parentNode.removeChild(this)};
+          card.onmouseover = function(){card.style.backgroundColor = "#aa0200"};
+          card.onmouseout = function(){card.style.backgroundColor = "white"};
           // add the newly created element and its content into the DOM
           contentContainer.appendChild(card);
         }
