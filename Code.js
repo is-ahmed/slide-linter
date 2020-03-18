@@ -46,3 +46,18 @@ function longTitle() {
   }
   return messages;
 }
+
+function tooManyPics(){
+
+    var selection = SlidesApp.getActivePresentation().getSelection();
+    var currentPage = selection.getCurrentPage();
+    var images = currentPage.getImages();
+
+    var messages = [];
+
+    if (images.length > 4){
+      messages.push("There are too many pictures on this slide.");
+    }
+
+    return messages;
+}

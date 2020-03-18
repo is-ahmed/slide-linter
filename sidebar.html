@@ -103,6 +103,10 @@
             .withSuccessHandler(success)
             .withFailureHandler(failure)
             .longTitle();
+          google.script.run
+            .withSuccessHandler(success)
+            .withFailureHandler(failure)
+            .tooManyPics();
         }
 
         function success(results) {
