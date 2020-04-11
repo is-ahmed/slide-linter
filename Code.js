@@ -67,3 +67,14 @@ function tooManyPics(){
 
     return messages;
 }
+
+function getSlideId(){
+
+  var selection = SlidesApp.getActivePresentation().getSelection();
+  var currentPage = selection.getCurrentPage();
+  var slide = currentPage.asSlide();
+
+  var id = slide.getObjectId();
+
+  return id;
+}
