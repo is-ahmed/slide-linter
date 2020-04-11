@@ -1,3 +1,5 @@
+/*This is a single line comment
+
 /**
  * Create a open linter menu item.
  * @param {Event} event The open event.
